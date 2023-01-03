@@ -31,6 +31,7 @@ import TVDetailsPage from "./pages/tvDetailsPage"
 import LoginPage from "./pages/loginPage";
 import AuthContextProvider from "./contexts/authContext";
 import SignUpPage from "./pages/signupPage"
+import PrivateRoute from "./privateRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -51,7 +52,7 @@ const App = () => {
             <Routes>
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
               <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
-              <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
+              <Route exact path="/movies/favourites" element={ <PrivateRoute><FavouriteMoviesPage /> </PrivateRoute>} />
               <Route exact path="/movies/upcoming" element={<UpcomingMoviesPage />} />
               <Route path="/movies/:id" element={<MoviePage />} />
               <Route path="/" element={<HomePage />} />

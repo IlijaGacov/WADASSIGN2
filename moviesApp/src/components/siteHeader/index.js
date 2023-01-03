@@ -44,9 +44,7 @@ const SiteHeader = ({ history }) => {
   };
 
   const handleLogoutSelection = (pageURL) => {
-    authContext.authToken = null;
-    authContext.isAuthenticated  = false;
-    authContext.userName = "";
+    authContext.signout();
     handleMenuSelect(pageURL);
   }
 
