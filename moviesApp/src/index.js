@@ -28,6 +28,7 @@ import TVContextProvider from "./contexts/tvContext";
 import PopularTVShowsPage from './pages/popularTVShowsPage'
 import TVDetailsPage from "./pages/tvDetailsPage"
 import LoginPage from "./pages/loginPage";
+import AuthContextProvider from "./contexts/authContext";
 
 
 const queryClient = new QueryClient({
@@ -43,6 +44,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <AuthContextProvider>
         <SiteHeader />
         <MoviesContextProvider>
             <Routes>
@@ -63,6 +65,7 @@ const App = () => {
               <Route path="/login" element={<LoginPage />} />
           </Routes>
         </MoviesContextProvider>
+        </AuthContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
