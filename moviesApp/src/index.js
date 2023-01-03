@@ -27,6 +27,7 @@ import TVPage from "./pages/tvDetailsPage";
 import TVContextProvider from "./contexts/tvContext";
 import PopularTVShowsPage from './pages/popularTVShowsPage'
 import TVDetailsPage from "./pages/tvDetailsPage"
+import LoginPage from "./pages/loginPage";
 
 
 const queryClient = new QueryClient({
@@ -59,6 +60,7 @@ const App = () => {
               <Route exact path="/movies/:id/similar" element={<SimilarMoviesPage />} />
               <Route path="/tv" element={<PopularTVShowsPage />} />
               <Route path="/tv/:id" element={<TVDetailsPage />} />
+              <Route path="/login" element={<LoginPage />} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
