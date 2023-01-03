@@ -27,9 +27,10 @@ import TVPage from "./pages/tvDetailsPage";
 import TVContextProvider from "./contexts/tvContext";
 import PopularTVShowsPage from './pages/popularTVShowsPage'
 import TVDetailsPage from "./pages/tvDetailsPage"
+
 import LoginPage from "./pages/loginPage";
 import AuthContextProvider from "./contexts/authContext";
-
+import SignUpPage from "./pages/signupPage"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -63,6 +64,7 @@ const App = () => {
               <Route path="/tv" element={<PopularTVShowsPage />} />
               <Route path="/tv/:id" element={<TVDetailsPage />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
           </Routes>
         </MoviesContextProvider>
         </AuthContextProvider>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { AuthContext } from "../../contexts/authContext";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -22,6 +23,8 @@ const SiteHeader = ({ history }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const navigate = useNavigate();
+
+  const authContext = useContext(AuthContext)
 
   const menuOptions = [
     { label: "Home", path: "/" },
@@ -40,6 +43,13 @@ const SiteHeader = ({ history }) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleLogoutSelection = (pageURL) => {
+    authContext.authToken = null;
+    authContext.isAuthenticated  = false;
+    authContext.userName = "";
+    handleMenuSelect(pageURL);
+  }
+
   return (
     <>
       <AppBar position="fixed" color="secondary">
@@ -47,9 +57,15 @@ const SiteHeader = ({ history }) => {
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
           </Typography>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          {authContext.isAuthenticated ? (
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Hello, {authContext.userName}
+          </Typography>
+          ) : (
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Everything about Movies and TV Shows!
           </Typography>
+          )}
             {isMobile ? (
               <>
                 <IconButton
