@@ -1,0 +1,29 @@
+FOR TV SHOWS
+
+add tmdb api get requests for various tv shows apis    DONE 
+
+add to site header+route        DONE
+
+COMPONENTS
+
+TVCard              DONE
+TV Details          DONE    
+TVList              DONE
+TVReview            DONE
+TVReviews           DONE
+filterTVCard        DONE             
+headerTV            DONE
+headerTVList        DONE
+templateTVList      DONE
+templateTVPage      DONE 
+
+CONTEXTS
+tvContext.js        DONE
+
+cardIcons
+TV related          DONE
+
+popularTVShowsPage.js           ALL ADDED BUT NOT WORKING :(
+TVDetailsPage.js
+possibly add favourite shows
+
