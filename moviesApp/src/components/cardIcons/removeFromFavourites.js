@@ -8,7 +8,8 @@ const RemoveFromFavouritesIcon = ({ movie }) => {
 
   const handleRemoveFromFavourites = (e) => {
     e.preventDefault();
-    context.removeFromFavourites(movie);
+    context.addToFavourites(movie.id)
+    context.loadFavourites()
   };
   return (
     <IconButton

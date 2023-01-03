@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AuthContext } from "../../contexts/authContext";
+import { MoviesContext } from "../../contexts/moviesContext";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -25,6 +26,7 @@ const SiteHeader = ({ history }) => {
   const navigate = useNavigate();
 
   const authContext = useContext(AuthContext)
+  const context = useContext(MoviesContext);
 
   const menuOptions = [
     { label: "Home", path: "/" },
@@ -45,6 +47,7 @@ const SiteHeader = ({ history }) => {
 
   const handleLogoutSelection = (pageURL) => {
     authContext.signout();
+    context.setFavourites([])
     handleMenuSelect(pageURL);
   }
 

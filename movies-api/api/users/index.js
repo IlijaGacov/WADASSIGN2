@@ -54,30 +54,47 @@ router.post('/',asyncHandler( async (req, res, next) => {
     }
 });
 
+router.get('/:userName/favourites', asyncHandler( async (req, res) => {
+  const userName = req.params.userName;
+  const user = await User.findByUserName(userName).populate('favourites');
+  res.status(200).json(user.favourites);
+}));
+
 //Add a favourite. No Error Handling Yet. Can add duplicates too!
 router.post('/:userName/favourites', asyncHandler(async (req, res) => {
     const newFavourite = req.body.id;
     const userName = req.params.userName;
-    const movie = await movieModel.findByMovieDBId(newFavourite);
+   // const movie = await movieModel.findByMovieDBId(newFavourite);
     const user = await User.findByUserName(userName);
 
-    console.log(newFavourite)
-    console.log(userName)
-    console.log(movie)
-    console.log(user)
+    // console.log(newFavourite)
+    // console.log(userName)
+    // console.log(movie)
+    // console.log(user)
 
-    if ( await user.favourites.includes(movie._id)){
+    if (newFavourite === undefined) {
+      res.status(401).json({success: false, msg: 'Please pass movie id.'});
+      return next();
+    }
+    if ( await user.favourites.includes(newFavourite)){
         res.status(401).json({code: 401,msg: 'Movie is already in user\'s favourites.'});
     }else{
-        await user.favourites.push(movie._id);
+        await user.favourites.push(newFavourite);
         await user.save(); 
         res.status(201).json(user); 
     }
   }));
 
-  router.get('/:userName/favourites', asyncHandler( async (req, res) => {
+  router.delete('/:userName/favourites', asyncHandler(async (req, res) => {
+    const favouriteToDel = req.body.id;
     const userName = req.params.userName;
-    const user = await User.findByUserName(userName).populate('favourites');
-    res.status(200).json(user.favourites);
+    const user = await User.findByUserName(userName);
+
+    
+        await user.favourites.push(favouriteToDel);
+        await user.save(); 
+        res.status(201).json(user); 
+    
   }));
+
 export default router;
