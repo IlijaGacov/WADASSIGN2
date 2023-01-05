@@ -4,15 +4,13 @@ Name: Ilija Gacov
 
 ## Features.
 
- + An authenticated user can view their own favourites, if a user isnt logged in, you are propted to log in
+ + An authenticated user can view their own favourites, if a user isnt logged in, you are propted to log in.
 
- + Login page, that also has a sign up page added
+ + Login page, that also has a sign up page added.
 
- + Movies and genres are now queried through the API
+ + Movies and genres are now queried through the API.
 
 ## Installation Requirements
-
-Describe what needs to be on the machine to run the API (Node v?, NPM, MongoDB instance, any other 3rd party software not in the package.json). 
 
 + Node.js V16.17.0
 
@@ -46,14 +44,14 @@ within both \movies-api and \moviesApp
 
 ## API Configuration
 
-+ Within moviesApp\.env
++ Within moviesApp create a file .env with the following contents:
 
 ```bat
 REACT_APP_TMDB_KEY=(Your TMDB API key)
 FAST_REFRESH=false
 ```
 
-+Within movies-api\.env
++ Within movies-api create a file called .env with the following contents:
 
 ```bat
 NODE_ENV=development
@@ -66,7 +64,6 @@ TMDB_KEY=(Your TMDB API key)
 ```
 
 ## API Design
-Give an overview of your web API design, perhaps similar to the following: 
 
 |  |  GET | POST | PUT | DELETE
 | -- | -- | -- | -- | -- 
@@ -82,15 +79,15 @@ Give an overview of your web API design, perhaps similar to the following:
 
 ## Security and Authentication
 
-Json Web Tokens are used to authenticate users
+Json Web Tokens are used to authenticate users.
 
-/movies/favourites is private and requires authentication to access
+/movies/favourites is a private route and requires authentication to access.
 
 ## Integrating with React App
 
-To access a users favourites, a user musted be logged in and authenticated.
-Some API calls like movies or movie genres are called through the node API.
-Other calls like login, signup and Getting/Adding/Removing favourites were all integrated from the labs
++ To access a users favourites, a user musted be logged in and authenticated.
++ Some API calls like movies or movie genres are called through the node API.
++ Other calls like login, signup and Getting/Adding/Removing favourites were all integrated from the labs
 
 
 ~~~Javascript
