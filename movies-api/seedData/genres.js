@@ -1,5 +1,4 @@
-const genres = {
-    "genres": [
+const genres = [
         {
             "id": 28,
             "name": "Action"
@@ -76,6 +75,5 @@ const genres = {
             "id": 37,
             "name": "Western"
         }
-    ]
-}
+];
 export default genres;
