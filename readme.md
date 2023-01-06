@@ -150,3 +150,8 @@ export const removeFavourite = (username, movieId) =>  {
     ).then(res => res.json());
   };
 ~~~
+
+## Youtube Video Demo Link
+
+YOUTUBE LINK (Since the submission was closed and I wanted to post it everywhere to make sure you can see it):
+https://youtu.be/Iefcz-qrB7k
